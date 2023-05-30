@@ -13,5 +13,6 @@ namespace MKBase.Data
         {
         }
         //public DbSet<Model> Models => Set<Model>();
+        public DbSet<User> Users => Set<User>();
     }
 }

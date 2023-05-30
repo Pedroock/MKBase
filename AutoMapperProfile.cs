@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using MKBase.Dtos.User;
+using MKBase.Models;
 
 namespace MKBase
 {
@@ -11,6 +13,7 @@ namespace MKBase
         public AutoMapperProfile()
         {
             //CreateMap<x, y>();
+            CreateMap<User, GetUserDto>();
         }
     }
 }
