@@ -11,5 +11,6 @@ namespace MKBase.Models
         public string Name { get; set; } = string.Empty;
         public string Intro { get; set; } = string.Empty;
         public List<Question>? Questions { get; set; }
+        public User? User { get; set; }
     }
 }

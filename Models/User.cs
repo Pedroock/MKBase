@@ -25,6 +25,7 @@ namespace MKBase.Models
         [MaxLength(6)]
         public string ValidationCode { get; set; } = string.Empty;
         public bool IsValidated { get; set; } = false;
+        public List<Survey>? Surveys { get; set; }
         public List<Answer>? Answers { get; set; }
     }
 }
