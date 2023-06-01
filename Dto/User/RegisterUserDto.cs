@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MKBase.Dtos.User
+namespace MKBase.Dto.User
 {
     public class RegisterUserDto
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MKBase.Dtos.User;
+using MKBase.Dto.User;
 using MKBase.Models;
 
 namespace MKBase.Service.AuthService

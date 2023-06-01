@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using MKBase.Dtos.User;
+using MKBase.Dto.User;
+using MKBase.Dto.Survey;
 using MKBase.Models;
 
 namespace MKBase
@@ -14,6 +15,8 @@ namespace MKBase
         {
             //CreateMap<x, y>();
             CreateMap<User, GetUserDto>();
+            CreateMap<AddSurveyDto, Survey>();
+            CreateMap<Survey, GetSurveyDto>();
         }
     }
 }

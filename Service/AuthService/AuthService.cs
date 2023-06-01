@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MKBase.Data;
 using MKBase.Models;
-using MKBase.Dtos.User;
+using MKBase.Dto.User;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;

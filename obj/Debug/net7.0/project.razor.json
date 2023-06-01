@@ -15157,6 +15157,50 @@
         }
       },
       {
+        "HashCode": -960170071,
+        "Kind": "ITagHelper",
+        "Name": "Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ClientParametersTagHelper",
+        "AssemblyName": "Microsoft.AspNetCore.ApiAuthorization.IdentityServer",
+        "Documentation": "<member name=\"T:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ClientParametersTagHelper\">\r\n            <summary>\r\n            A tag helper for generating client parameters for a given oauth/openid client as data attributes.\r\n            </summary>\r\n        </member>",
+        "CaseSensitive": false,
+        "TagMatchingRules": [
+          {
+            "TagName": "*",
+            "Attributes": [
+              {
+                "Name": "asp-apiauth-parameters"
+              }
+            ]
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "ITagHelper",
+            "Name": "asp-apiauth-parameters",
+            "TypeName": "System.String",
+            "Documentation": "<member name=\"P:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ClientParametersTagHelper.ClientId\">\r\n            <summary>\r\n            Gets or sets the client id.\r\n            </summary>\r\n        </member>",
+            "Metadata": {
+              "Common.PropertyName": "ClientId"
+            }
+          },
+          {
+            "Kind": "ITagHelper",
+            "Name": "view-context",
+            "TypeName": "Microsoft.AspNetCore.Mvc.Rendering.ViewContext",
+            "Documentation": "<member name=\"P:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ClientParametersTagHelper.ViewContext\">\r\n            <summary>\r\n            Gets or sets the ViewContext.\r\n            </summary>\r\n        </member>",
+            "Metadata": {
+              "Common.PropertyName": "ViewContext"
+            }
+          }
+        ],
+        "Metadata": {
+          "Common.TypeName": "Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ClientParametersTagHelper",
+          "Common.TypeNameIdentifier": "ClientParametersTagHelper",
+          "Common.TypeNamespace": "Microsoft.AspNetCore.ApiAuthorization.IdentityServer",
+          "Runtime.Name": "ITagHelper"
+        }
+      },
+      {
         "HashCode": 1169732957,
         "Kind": "Components.Bind",
         "Name": "Bind",

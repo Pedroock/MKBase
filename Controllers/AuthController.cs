@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MKBase.Service.AuthService;
 using MKBase.Models;
-using MKBase.Dtos.User;
+using MKBase.Dto.User;
 using Microsoft.AspNetCore.Authorization;
 
 namespace MKBase.Controllers

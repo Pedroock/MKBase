@@ -6,6 +6,9 @@ using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Filters;
 using MKBase.Service.SurveyService;
 using MKBase.Service.ContextService;
+using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
+using MKBase.Models;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +34,10 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ISurveyService, SurveyService>();
 builder.Services.AddScoped<IContextService, ContextService>();
+builder.Services.AddAuthorization(options =>
+{
+   options.AddPolicy("AdmOnly", policy => policy.RequireClaim("adm"));
+});
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
     options => 
     {
