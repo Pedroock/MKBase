@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MKBase.Dto.User;
 using MKBase.Dto.Survey;
+using MKBase.Dto.Question;
 using MKBase.Models;
 
 namespace MKBase
@@ -17,6 +18,8 @@ namespace MKBase
             CreateMap<User, GetUserDto>();
             CreateMap<AddSurveyDto, Survey>();
             CreateMap<Survey, GetSurveyDto>();
+            CreateMap<AddQuestionDto, Question>();
+            CreateMap<Question, GetQuestionDto>();
         }
     }
 }

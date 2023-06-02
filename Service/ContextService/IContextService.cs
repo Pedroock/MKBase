@@ -10,5 +10,6 @@ namespace MKBase.Service.ContextService
     {
         int GetCurrentUserId();
         User GetCurrentUser();
+        bool SurveyIsOwnedByCurrentUser(int id);
     }
 }

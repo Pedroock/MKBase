@@ -2,12 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
 
-namespace MKBase.Models
+namespace MKBase.Dto.Question
 {
-    public class Question
+    public class GetQuestionDto
     {
         public int Id { get; set; }
         public string Title { get; set; } = string.Empty;
@@ -15,6 +13,7 @@ namespace MKBase.Models
         public string Content { get; set; } = string.Empty;
         public string Options { get; set; } = string.Empty;
         public int Position { get; set; }
-        public Survey? Survey { get; set; }
+        public string SurveyName { get; set; } = string.Empty;
+        public int SurveyId { get; set; }
     }
 }

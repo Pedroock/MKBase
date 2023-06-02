@@ -22,5 +22,15 @@ namespace MKBase.Service.ContextService
             _httpContext.HttpContext!.User.FindFirstValue(ClaimTypes.NameIdentifier)!
         );
         public User GetCurrentUser() => _context.Users.FirstOrDefault(u => u.Id == GetCurrentUserId())!;
+
+        public bool SurveyIsOwnedByCurrentUser(int id)
+        {
+            Survey survey = _context.Surveys.Include(s => s.User).FirstOrDefault(s => s.Id == id)!;
+            if(survey is null)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

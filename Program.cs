@@ -9,6 +9,7 @@ using MKBase.Service.ContextService;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using MKBase.Models;
 using System.Security.Claims;
+using MKBase.Service.QuestionService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +35,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ISurveyService, SurveyService>();
 builder.Services.AddScoped<IContextService, ContextService>();
+builder.Services.AddScoped<IQuestionService, QuestionService>();
 builder.Services.AddAuthorization(options =>
 {
    options.AddPolicy("AdmOnly", policy => policy.RequireClaim("adm"));
