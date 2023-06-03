@@ -22,6 +22,16 @@ namespace MKBase.Service.QuestionService
             _contextService = contextService;
             _mapper = mapper;
         }
+        // Needed methods
+        private GetQuestionDto MapQuestionDto(Question question)
+        {
+            GetQuestionDto questionDto = _mapper.Map<GetQuestionDto>(question);
+            questionDto.SurveyId = question.Survey!.Id;
+            questionDto.SurveyName = question.Survey!.Name;
+            return questionDto;
+        }
+
+        // Interface methods
         public ServiceResponse<GetQuestionDto> CreateQuestion(AddQuestionDto request)
         {
             ServiceResponse<GetQuestionDto> response = new ServiceResponse<GetQuestionDto>();
@@ -45,11 +55,8 @@ namespace MKBase.Service.QuestionService
                 question.Survey = survey;
                 _context.Questions.Add(question);
                 _context.SaveChanges();
-                GetQuestionDto questionDto = _mapper.Map<GetQuestionDto>(question);
-                questionDto.SurveyId = survey.Id;
-                questionDto.SurveyName = survey.Name;
                 response.Message = "You have created the question";
-                response.Data = questionDto;
+                response.Data = MapQuestionDto(question);
                 return response;
             }
             catch(Exception e)
@@ -79,11 +86,8 @@ namespace MKBase.Service.QuestionService
                     response.Message = "You have no access to this question";
                     return response;
                 }
-                GetQuestionDto questionDto = _mapper.Map<GetQuestionDto>(question);
-                questionDto.SurveyId = question.Survey.Id;
-                questionDto.SurveyName = question.Survey.Name;
-                response.Message = "You have created the question";
-                response.Data = questionDto;
+                response.Message = "This is the question";
+                response.Data = MapQuestionDto(question);
                 return response;
             }
             catch(Exception e)
@@ -117,10 +121,7 @@ namespace MKBase.Service.QuestionService
                 List<GetQuestionDto> questionDtoList = new List<GetQuestionDto>();
                 foreach(Question question in questions)
                 {
-                    GetQuestionDto questionDto = _mapper.Map<GetQuestionDto>(question);
-                    questionDto.SurveyId = question.Survey!.Id;
-                    questionDto.SurveyName = question.Survey.Name;
-                    questionDtoList.Add(questionDto);
+                    questionDtoList.Add(MapQuestionDto(question));
                 }
                 response.Message = "These are the questions";
                 response.Data = questionDtoList;
@@ -139,7 +140,28 @@ namespace MKBase.Service.QuestionService
             ServiceResponse<GetQuestionDto> response = new ServiceResponse<GetQuestionDto>();
             try
             {
-
+                Question question = _context.Questions
+                    .Include(q => q.Survey).FirstOrDefault(q => q.Id == request.QuestionId)!;
+                if(question is null)
+                {
+                    response.Success = false;
+                    response.Message = "There is no question with this id";
+                    return response;
+                }
+                if(_contextService.SurveyIsOwnedByCurrentUser(request.SurveyId) == false)
+                {
+                    response.Success = false;
+                    response.Message = "You have no access to this question";
+                    return response;
+                }
+                question.Title = request.Title;
+                question.Type = request.Type;
+                question.Content = request.Content;
+                question.Options = request.Options;
+                _context.SaveChanges();
+                response.Message = "You have successfully edited the question";
+                response.Data = MapQuestionDto(question);
+                return response;
             }
             catch(Exception e)
             {
@@ -149,12 +171,30 @@ namespace MKBase.Service.QuestionService
             }
         }
 
-        public ServiceResponse<string> DeleteQuestionById(int id)
+        public ServiceResponse<string> DeleteQuestionById(QuestionSurveyIdDto request)
         {
             ServiceResponse<string> response = new ServiceResponse<string>();
             try
             {
-
+                Question question = _context.Questions
+                    .Include(q => q.Survey).FirstOrDefault(q => q.Id == request.QuestionId)!;
+                if(question is null)
+                {
+                    response.Success = false;
+                    response.Message = "There is no question with this id";
+                    return response;
+                }
+                if(_contextService.SurveyIsOwnedByCurrentUser(question.Survey!.Id) == false)
+                {
+                    response.Success = false;
+                    response.Message = "You have no access to this question";
+                    return response;
+                }
+                response.Data = $"questionId {question.Id}";
+                _context.Questions.Remove(question);
+                _context.SaveChanges();
+                response.Message = "You have deleted the question";
+                return response;
             }
             catch(Exception e)
             {

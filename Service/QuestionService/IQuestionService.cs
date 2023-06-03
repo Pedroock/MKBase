@@ -13,6 +13,6 @@ namespace MKBase.Service.QuestionService
         ServiceResponse<GetQuestionDto> GetQuestionById(QuestionSurveyIdDto request);
         ServiceResponse<List<GetQuestionDto>> GetAllQuestions(int surveyId);
         ServiceResponse<GetQuestionDto> EditQuestionContent(EditQuestionDto request);
-        ServiceResponse<string> DeleteQuestionById(int id);
+        ServiceResponse<string> DeleteQuestionById(QuestionSurveyIdDto request);
     }
 }
