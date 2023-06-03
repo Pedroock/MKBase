@@ -22,6 +22,22 @@ namespace MKBase.Service.SurveyService
             _context = context;
             _mapper = mapper;
         }
+        // Needed
+        private List<int> GetSurveyQuestionIds(int surveyId)
+        {
+            Survey survey = _context.Surveys.Include(s => s.Questions).FirstOrDefault(s => s.Id == surveyId)!;
+            if(survey.Questions is null)
+            {
+                return new List<int>();
+            }
+            List<int> questionIds = new List<int>();
+            foreach(Question question in survey.Questions)
+            {
+                questionIds.Add(question.Id);
+            }
+            return questionIds;
+        }
+        // Surveys
         public ServiceResponse<GetSurveyDto> CreateSurvey(AddSurveyDto request)
         {
             ServiceResponse<GetSurveyDto> response = new ServiceResponse<GetSurveyDto>();
@@ -50,13 +66,21 @@ namespace MKBase.Service.SurveyService
             try
             {
                 Survey survey = _context.Surveys.Include(s => s.User).FirstOrDefault(s => s.Id == id)!;
+                if(survey is null)
+                {
+                    response.Success = false;
+                    response.Message = "There is no survey with this id";
+                    return response;
+                }
                 if(survey.User != _contextService.GetCurrentUser())
                 {
                     response.Success = false;
                     response.Message = "You have no surveys with this id";
                     return response;
                 }
-                response.Data = _mapper.Map<GetSurveyDto>(survey);
+                GetSurveyDto surveyDto = _mapper.Map<GetSurveyDto>(survey);
+                surveyDto.QuestionsId = (GetSurveyQuestionIds(survey.Id));
+                response.Data = surveyDto;
                 response.Message = "Thats the survey";
                 return response;
             }
@@ -78,7 +102,9 @@ namespace MKBase.Service.SurveyService
                     .ToList();
                 foreach(Survey survey in surveys)
                 {
-                    surveyDtos.Add(_mapper.Map<GetSurveyDto>(survey));
+                    GetSurveyDto surveyDto = _mapper.Map<GetSurveyDto>(survey);
+                    surveyDto.QuestionsId = GetSurveyQuestionIds(survey.Id);
+                    surveyDtos.Add(surveyDto);
                 }
                 response.Data = surveyDtos;
                 response.Message = "These are the surveys";

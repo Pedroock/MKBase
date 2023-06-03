@@ -31,7 +31,7 @@ namespace MKBase.Controllers
             return Ok(response);
         }
 
-        [HttpGet("Get Question By Id")]
+        [HttpPost("Get Question By Id")]
         public ActionResult<ServiceResponse<GetQuestionDto>> GetQuestionById(QuestionSurveyIdDto request)
         {
             ServiceResponse<GetQuestionDto> response = _questionService.GetQuestionById(request);
