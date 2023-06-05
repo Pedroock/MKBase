@@ -67,13 +67,13 @@ namespace MKBase.Service.QuestionService
             }
         }
 
-        public ServiceResponse<GetQuestionDto> GetQuestionById(QuestionSurveyIdDto request)
+        public ServiceResponse<GetQuestionDto> GetQuestionById(int id)
         {
             ServiceResponse<GetQuestionDto> response = new ServiceResponse<GetQuestionDto>();
             try
             {
                 Question question = _context.Questions
-                    .Include(q => q.Survey).FirstOrDefault(q => q.Id == request.QuestionId)!;
+                    .Include(q => q.Survey).FirstOrDefault(q => q.Id == id)!;
                 if(question is null)
                 {
                     response.Success = false;
@@ -171,13 +171,13 @@ namespace MKBase.Service.QuestionService
             }
         }
 
-        public ServiceResponse<string> DeleteQuestionById(QuestionSurveyIdDto request)
+        public ServiceResponse<string> DeleteQuestionById(int id)
         {
             ServiceResponse<string> response = new ServiceResponse<string>();
             try
             {
                 Question question = _context.Questions
-                    .Include(q => q.Survey).FirstOrDefault(q => q.Id == request.QuestionId)!;
+                    .Include(q => q.Survey).FirstOrDefault(q => q.Id == id)!;
                 if(question is null)
                 {
                     response.Success = false;

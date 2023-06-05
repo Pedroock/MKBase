@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace MKBase.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/surveys")]
     [Authorize]
     public class SurveyController : ControllerBase
     {
@@ -20,7 +20,7 @@ namespace MKBase.Controllers
         {
             _surveyService = surveyService;
         }
-        [HttpPost("Create Survey")]
+        [HttpPost()]
         public ActionResult<ServiceResponse<GetSurveyDto>> CreateSurvey(AddSurveyDto request)
         {
             ServiceResponse<GetSurveyDto> response = _surveyService.CreateSurvey(request)!;
@@ -31,7 +31,7 @@ namespace MKBase.Controllers
             return Ok(response);
         }
 
-        [HttpGet("Get Survey By Id")]
+        [HttpGet("{id:int}")]
         public ActionResult<ServiceResponse<GetSurveyDto>> GetSurveyById(int id)
         {
             ServiceResponse<GetSurveyDto> response = _surveyService.GetSurveyById(id)!;
@@ -42,7 +42,7 @@ namespace MKBase.Controllers
             return Ok(response);
         }
 
-        [HttpGet("Get All Surveys")]
+        [HttpGet()]
         public ActionResult<ServiceResponse<List<GetSurveyDto>>> GetAllSurveys()
         {
             ServiceResponse<List<GetSurveyDto>> response = _surveyService.GetAllSurveys()!;
@@ -53,7 +53,7 @@ namespace MKBase.Controllers
             return Ok(response);
         }
 
-        [HttpPut("Edit Survey Info")]
+        [HttpPut()]
         public ActionResult<ServiceResponse<GetSurveyDto>> EditSurveyInfo(EditSurveyDto request)
         {
             ServiceResponse<GetSurveyDto> response = _surveyService.EditSurveyInfo(request)!;
@@ -64,7 +64,7 @@ namespace MKBase.Controllers
             return Ok(response);
         }
 
-        [HttpDelete("Delete Survey By Id")]
+        [HttpDelete("{id:int}")]
         public ActionResult<ServiceResponse<string>> DeleteSurveyById(int id)
         {
             ServiceResponse<string> response = _surveyService.DeleteSurveyById(id)!;

@@ -10,9 +10,9 @@ namespace MKBase.Service.QuestionService
     public interface IQuestionService
     {
         ServiceResponse<GetQuestionDto> CreateQuestion(AddQuestionDto request);
-        ServiceResponse<GetQuestionDto> GetQuestionById(QuestionSurveyIdDto request);
+        ServiceResponse<GetQuestionDto> GetQuestionById(int id);
         ServiceResponse<List<GetQuestionDto>> GetAllQuestions(int surveyId);
         ServiceResponse<GetQuestionDto> EditQuestionContent(EditQuestionDto request);
-        ServiceResponse<string> DeleteQuestionById(QuestionSurveyIdDto request);
+        ServiceResponse<string> DeleteQuestionById(int id);
     }
 }

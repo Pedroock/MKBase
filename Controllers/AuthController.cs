@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace MKBase.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/auth")]
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
@@ -20,7 +20,7 @@ namespace MKBase.Controllers
             _authService = authService;
         }
 
-        [HttpPost("Register")]
+        [HttpPost("register")]
         public ActionResult<ServiceResponse<GetUserDto>> Register(RegisterUserDto request)
         {
             ServiceResponse<GetUserDto> response = _authService.Register(request);
@@ -31,7 +31,7 @@ namespace MKBase.Controllers
             return Ok(response);
         }
 
-        [HttpPost("Login")]
+        [HttpPost("login")]
         public ActionResult<ServiceResponse<string>> Login(LoginUserDto request)
         {
             ServiceResponse<string> response = _authService.Login(request);
@@ -43,7 +43,7 @@ namespace MKBase.Controllers
         }
 
         [Authorize]
-        [HttpPost("Reset Password")]
+        [HttpPost("reset/password")]
         public ActionResult<ServiceResponse<GetUserDto>> ResetPassword(ResetUserPasswordDto request)
         {
             ServiceResponse<GetUserDto> response = _authService.ResetPasword(request);
@@ -55,7 +55,7 @@ namespace MKBase.Controllers
         }
 
         [Authorize]
-        [HttpPost("Reset Email")]
+        [HttpPost("reset/email")]
         public ActionResult<ServiceResponse<GetUserDto>> ResetEmail(string email)
         {
             ServiceResponse<GetUserDto> response = _authService.ResetEmail(email);
@@ -67,7 +67,7 @@ namespace MKBase.Controllers
         }
 
         [Authorize]
-        [HttpPost("Send Validation Email")]
+        [HttpPost("code/send")]
         public async Task<ActionResult> SendValidationEmail()
         {
             await _authService.SendValidationEmail();
@@ -75,7 +75,7 @@ namespace MKBase.Controllers
         }
 
         [Authorize]
-        [HttpPost("Enter Validation Code")]
+        [HttpPost("code/{code:int}")]
         public ActionResult<ServiceResponse<GetUserDto>> EnterValidationCode(string code)
         {
             ServiceResponse<GetUserDto> response = _authService.EnterValidationCode(code);

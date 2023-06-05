@@ -12,15 +12,15 @@ namespace MKBase.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("api/[controller]")]
-    public class QuestionService : ControllerBase
+    [Route("api/questions")]
+    public class QuestionController : ControllerBase
     {
         private readonly IQuestionService _questionService;
-        public QuestionService(IQuestionService questionService)
+        public QuestionController(IQuestionService questionService)
         {
             _questionService = questionService;
         }
-        [HttpPost("Creaete Question")]
+        [HttpPost()]
         public ActionResult<ServiceResponse<GetQuestionDto>> CreateQuestion(AddQuestionDto request)
         {
             ServiceResponse<GetQuestionDto> response = _questionService.CreateQuestion(request);
@@ -31,10 +31,10 @@ namespace MKBase.Controllers
             return Ok(response);
         }
 
-        [HttpPost("Get Question By Id")]
-        public ActionResult<ServiceResponse<GetQuestionDto>> GetQuestionById(QuestionSurveyIdDto request)
+        [HttpGet("{id:int}")]
+        public ActionResult<ServiceResponse<GetQuestionDto>> GetQuestionById(int id)
         {
-            ServiceResponse<GetQuestionDto> response = _questionService.GetQuestionById(request);
+            ServiceResponse<GetQuestionDto> response = _questionService.GetQuestionById(id);
             if(response.Success == false)
             {
                 return BadRequest(response);
@@ -42,7 +42,7 @@ namespace MKBase.Controllers
             return Ok(response);
         }
 
-        [HttpGet("Get All Questions")]
+        [HttpGet()]
         public ActionResult<ServiceResponse<List<GetQuestionDto>>> GetAllQuestions(int surveyId)
         {
             ServiceResponse<List<GetQuestionDto>> response = _questionService.GetAllQuestions(surveyId);
@@ -53,7 +53,7 @@ namespace MKBase.Controllers
             return Ok(response);
         }
 
-        [HttpPut("Edit Question Content")]
+        [HttpPut()]
         public ActionResult<ServiceResponse<GetQuestionDto>> EditQuestionContent(EditQuestionDto request)
         {
             ServiceResponse<GetQuestionDto> response = _questionService.EditQuestionContent(request);
@@ -64,10 +64,10 @@ namespace MKBase.Controllers
             return Ok(response);
         }
 
-        [HttpDelete("Delete Question By Id")]
-        public ActionResult<ServiceResponse<string>> DeleeteQuestionById(QuestionSurveyIdDto request)
+        [HttpDelete("{id:int}")]
+        public ActionResult<ServiceResponse<string>> DeleeteQuestionById(int id)
         {
-            ServiceResponse<string> response = _questionService.DeleteQuestionById(request);
+            ServiceResponse<string> response = _questionService.DeleteQuestionById(id);
             if(response.Success == false)
             {
                 return BadRequest(response);
