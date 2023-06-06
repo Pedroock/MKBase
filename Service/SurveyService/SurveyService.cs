@@ -97,9 +97,8 @@ namespace MKBase.Service.SurveyService
             try
             {
                 List<GetSurveyDto> surveyDtos = new List<GetSurveyDto>();
-                List<Survey> surveys = _context.Surveys
-                    .Where(s => s.User == _contextService.GetCurrentUser())
-                    .ToList();
+                IEnumerable<Survey> surveys = _context.Surveys
+                    .Where(s => s.User == _contextService.GetCurrentUser());
                 foreach(Survey survey in surveys)
                 {
                     GetSurveyDto surveyDto = _mapper.Map<GetSurveyDto>(survey);

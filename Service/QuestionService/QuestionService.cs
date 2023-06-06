@@ -116,8 +116,8 @@ namespace MKBase.Service.QuestionService
                     response.Message = "You have no access to this survey";
                     return response;
                 }
-                List<Question> questions = _context.Questions
-                    .Include(q => q.Survey).Where(q => q.Survey == survey)!.ToList();
+                IEnumerable<Question> questions = _context.Questions
+                    .Include(q => q.Survey).Where(q => q.Survey == survey);
                 List<GetQuestionDto> questionDtoList = new List<GetQuestionDto>();
                 foreach(Question question in questions)
                 {
