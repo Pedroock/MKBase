@@ -44,6 +44,12 @@ namespace MKBase.Service.SurveyService
             try
             {
                 User user = _contextService.GetCurrentUser();
+                if(!_contextService.CurrentUserIsValidated())
+                {
+                    response.Success = false;
+                    response.Message = "User is not validated";
+                    return response;
+                }
                 Survey survey = _mapper.Map<Survey>(request);
                 survey.User = user;
                 _context.Surveys.Add(survey);

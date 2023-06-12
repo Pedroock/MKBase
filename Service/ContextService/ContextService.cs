@@ -32,5 +32,9 @@ namespace MKBase.Service.ContextService
             }
             return true;
         }
+        public bool CurrentUserIsValidated()
+        {
+            return GetCurrentUser().IsValidated;
+        }
     }
 }
