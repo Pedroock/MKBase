@@ -1,0 +1,18 @@
+.pesquisas{
+    margin-right: 20px;
+    padding-right: 20px;
+    border-right: 1px black solid;
+    height: 90vh;
+}
+.linha-bottom{
+    padding-bottom: 10px;
+    width: 500px;
+}
+.pergunta{
+    margin-bottom: 20px;
+    border-bottom: 1px black solid;
+}
+.pesquisa-div{
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+}

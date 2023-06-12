@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>survey test</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="display: flex;">
+    <div class="intro">
+        <h1>Área de teste, insira o token</h1>
+        <input type="text" placeholder="token aqui" id="input-token">
+        <button id="botao-token">botao</button>
+    </div>
+    <div class="pesquisas" style="display: none;">
+        <h1>Aqui vc escolhe oq vai fazer com as pesquisas</h1>
+        <button id="botao-pega-tudo-pesquisa">pega tds</button>
+        <div class="escolha-criar">
+            <p>criar</p>
+            <input type="text" placeholder="nome" id="pesquisa-input-nome">
+            <input type="text" placeholder="intro" id="pesquisa-input-intro">
+            <button id="botao-cria-pesquisa">cria</button>
+        </div>
+        <div class="escolha-pegar-id">
+            <p>pega uma por id</p>
+            <input type="text" placeholder="id" id="pesquisa-input-id-pega">
+            <button id="botao-pega-id">pega</button>
+        </div>
+        <div class="escolha-excluir-id">
+            <p>excluir uma por id</p>
+            <input type="text" placeholder="id" id="pesquisa-input-id-excluir">
+            <button id="botao-exclui-id">excluir</button>
+        </div>
+        <div class="escolha-editar">
+            <p>edita por id</p>
+            <input type="text" placeholder="nome" id="pesquisa-input-nome-editar">
+            <input type="text" placeholder="intro" id="pesquisa-input-intro-editar">
+            <button id="botao-edita-id">cria</button>
+        </div>
+    </div>
+    <div class="resultados" style="display: none;">
+        <div class="pesquisa-div">
+            <h1>titulo</h1>
+            <p class="linha-bottom">intro blablbalbalbalblabla</p>
+            
+            <div class="pergunta">
+                <h3>titulo da pergunta</h3>
+                <div class="conteudo-pergunta">
+                    <p>algo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
