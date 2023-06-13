@@ -109,3 +109,4 @@ C:\Users\pedro\OneDrive\Documentos\GitHub\MKBase\bin\Debug\net7.0\Microsoft.Exte
 C:\Users\pedro\OneDrive\Documentos\GitHub\MKBase\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\pedro\OneDrive\Documentos\GitHub\MKBase\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\pedro\OneDrive\Documentos\GitHub\MKBase\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\pedro\OneDrive\Documentos\GitHub\MKBase\bin\Debug\net7.0\MKBase.staticwebassets.runtime.json

@@ -1,11 +1,71 @@
 {
   "Version": 1,
-  "Hash": "q4pGh9Qvn8KDwi4K5tcSzJnKTKhHftsDADBJNFkFwzY=",
+  "Hash": "OVde1+KgoGLaThaoj321EvxLcrQL8lO2J/T02TF0qeg=",
   "Source": "MKBase",
   "BasePath": "_content/MKBase",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "MKBase\\wwwroot",
+      "Source": "MKBase",
+      "ContentRoot": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\MKBase\\wwwroot\\",
+      "BasePath": "_content/MKBase",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\MKBase\\wwwroot\\index.html",
+      "SourceId": "MKBase",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\MKBase\\wwwroot\\",
+      "BasePath": "_content/MKBase",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\MKBase\\wwwroot\\script.js",
+      "SourceId": "MKBase",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\MKBase\\wwwroot\\",
+      "BasePath": "_content/MKBase",
+      "RelativePath": "script.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\script.js"
+    },
+    {
+      "Identity": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\MKBase\\wwwroot\\style.css",
+      "SourceId": "MKBase",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\MKBase\\wwwroot\\",
+      "BasePath": "_content/MKBase",
+      "RelativePath": "style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\style.css"
+    }
+  ]
 }
