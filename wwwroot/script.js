@@ -1,6 +1,7 @@
 // token
 var token;
 var getall;
+var getsingle;
 document.getElementById("botao-token").addEventListener("click", function(){
     let valor = document.getElementById("input-token").value;
     token = valor;
@@ -78,4 +79,40 @@ document.getElementById("botao-pega-tudo-pesquisa").addEventListener("click", as
     getall.data.forEach(pesquisa => {
         criapesquisa(pesquisa);
     });
+});
+
+// getsingle 
+document.getElementById("botao-pega-id").addEventListener("click", async function(){
+    let resultados = document.querySelector(".resultados");
+    resultados.innerHTML = "";
+    let id = document.querySelector("#pesquisa-input-id-pega").value;
+    let url = 'http://localhost:5293/api/surveys/' + id;
+    await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token,
+        },
+    })
+    .then(data => data.json())
+    .then(response => getsingle = response);
+    criapesquisa(getsingle.data);
+});
+
+// post
+document.getElementById("botao-cria-pesquisa").addEventListener("click", async function(){
+    let resultados = document.querySelector(".resultados");
+    resultados.innerHTML = "";
+    let id = document.querySelector("#pesquisa-input-id-pega").value;
+    let url = 'http://localhost:5293/api/surveys/' + id;
+    await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token,
+        },
+    })
+    .then(data => data.json())
+    .then(response => getsingle = response);
+    criapesquisa(getsingle.data);
 });
