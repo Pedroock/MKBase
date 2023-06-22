@@ -101,16 +101,58 @@ document.getElementById("botao-pega-id").addEventListener("click", async functio
 
 // post
 document.getElementById("botao-cria-pesquisa").addEventListener("click", async function(){
+    let intro = document.querySelector("#pesquisa-input-intro").value;
+    let nome = document.querySelector("#pesquisa-input-nome").value;
     let resultados = document.querySelector(".resultados");
     resultados.innerHTML = "";
     let id = document.querySelector("#pesquisa-input-id-pega").value;
     let url = 'http://localhost:5293/api/surveys/' + id;
     await fetch(url, {
-        method: 'GET',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + token,
         },
+        body: JSON.stringify({"name": nome, "intro": intro}),
+    })
+    .then(data => data.json())
+    .then(response => getsingle = response);
+    criapesquisa(getsingle.data);
+});
+
+// xclui
+document.getElementById("botao-exclui-id").addEventListener("click", async function(){
+    let resultados = document.querySelector(".resultados");
+    resultados.innerHTML = "";
+    let id = document.querySelector("#pesquisa-input-id-excluir").value;
+    let url = 'http://localhost:5293/api/surveys/' + id;
+    await fetch(url, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json', 
+          'Authorization': 'Bearer ' + token,
+        },
+    })
+    .then(data => data.json())
+    .then(response => getsingle = response);
+    console.log("foi porraaaa");
+});
+
+// edit
+document.getElementById("botao-edita-id").addEventListener("click", async function(){
+    let intro = document.querySelector("#pesquisa-input-intro-editar").value;
+    let nome = document.querySelector("#pesquisa-input-nome-editar").value;
+    let resultados = document.querySelector(".resultados");
+    resultados.innerHTML = "";
+    let id = document.querySelector("#pesquisa-input-id-editar").value;
+    let url = 'http://localhost:5293/api/surveys/'
+    await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token,
+        },
+        body: JSON.stringify({"id": id, "name": nome, "intro": intro}),
     })
     .then(data => data.json())
     .then(response => getsingle = response);
